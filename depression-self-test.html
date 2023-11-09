@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Depression Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        #container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .question {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <h1>Depression Test</h1>
+        <p>Answer the following questions with 'Yes' or 'No'.</p>
+
+        <div class="question">
+            <p>1. Do you often feel sad or down?</p>
+            <input type="radio" name="q1" value="yes"> Yes
+            <input type="radio" name="q1" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>2. Do you have trouble sleeping or sleep too much?</p>
+            <input type="radio" name="q2" value="yes"> Yes
+            <input type="radio" name="q2" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>3. Do you often feel tired or lack energy?</p>
+            <input type="radio" name="q3" value="yes"> Yes
+            <input type="radio" name="q3" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>4. Do you have a reduced appetite or overeat?</p>
+            <input type="radio" name="q4" value="yes"> Yes
+            <input type="radio" name="q4" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>5. Do you have trouble concentrating or making decisions?</p>
+            <input type="radio" name="q5" value="yes"> Yes
+            <input type="radio" name="q5" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>6. Do you feel guilty or worthless?</p>
+            <input type="radio" name="q6" value="yes"> Yes
+            <input type="radio" name="q6" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>7. Do you have a loss of interest or pleasure in activities?</p>
+            <input type="radio" name="q7" value="yes"> Yes
+            <input type="radio" name="q7" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>8. Do you have thoughts of self-harm or suicide?</p>
+            <input type="radio" name="q8" value="yes"> Yes
+            <input type="radio" name="q8" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>9. Do you have changes in appetite or weight?</p>
+            <input type="radio" name="q9" value="yes"> Yes
+            <input type="radio" name="q9" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>10. Do you have trouble falling asleep or staying asleep?</p>
+            <input type="radio" name="q10" value="yes"> Yes
+            <input type="radio" name="q10" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>11. Do you isolate yourself from friends and family?</p>
+            <input type="radio" name="q11" value="yes"> Yes
+            <input type="radio" name="q11" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>12. Do you experience physical symptoms like aches or pains?</p>
+            <input type="radio" name="q12" value="yes"> Yes
+            <input type="radio" name="q12" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>13. Do you have a decreased interest in sex?</p>
+            <input type="radio" name="q13" value="yes"> Yes
+            <input type="radio" name="q13" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>14. Do you have trouble remembering things?</p>
+            <input type="radio" name="q14" value="yes"> Yes
+            <input type="radio" name="q14" value="no"> No
+        </div>
+
+        <div class="question">
+            <p>15. Do you experience unexplained crying spells?</p>
+            <input type="radio" name="q15" value="yes"> Yes
+            <input type="radio" name="q15" value="no"> No
+        </div>
+
+        <button onclick="calculateScore()">Submit</button>
+        <p id="result"></p>
+    </div>
+
+    <script>
+        function calculateScore() {
+            let score = 0;
+
+            // Calculate the score by checking the selected radio buttons
+            for (let i = 1; i <= 15; i++) {
+                const answer = document.querySelector(`input[name="q${i}"]:checked`);
+                if (answer && answer.value === "yes") {
+                    score++;
+                }
+            }
+
+            // Display the result
+            if (score > 12) {
+                document.getElementById("result").innerText = "Warning: You may be at risk of depression. Please consult a healthcare professional.";
+            } else {
+                document.getElementById("result").innerText = "You may not be at significant risk of depression, but consult a healthcare professional if you have concerns.";
+            }
+        }
+    </script>
+</body>
+</html>
