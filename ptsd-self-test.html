@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PTSD Self-Test</title>
+    <style>
+        ol {
+            list-style-type: decimal;
+        }
+    </style>
 </head>
 <body>
     <h1>PTSD Self-Test</h1>
@@ -22,7 +27,7 @@
                 <input type="radio" name="q2" value="no"> No
             </li>
             <li>
-                <label for="q3">Do you avoid situations or stimuli that remind you of the traumatic event?</label>
+                <label for "q3">Do you avoid situations or stimuli that remind you of the traumatic event?</label>
                 <input type="radio" name="q3" value="yes"> Yes
                 <input type="radio" name="q3" value="no"> No
             </li>
@@ -36,7 +41,6 @@
                 <input type="radio" name="q5" value="yes"> Yes
                 <input type="radio" name="q5" value="no"> No
             </li>
-            <!-- Additional Questions -->
             <li>
                 <label for="q6">Do you experience a heightened startle response (e.g., easily startled by loud noises)?</label>
                 <input type="radio" name="q6" value="yes"> Yes
@@ -92,12 +96,21 @@
     </form>
 
     <p>Your PTSD Self-Test Score: <span id="ptsdScore">Not calculated yet</span></p>
+    <p id="ptsdWarning"></p>
 
     <script>
         function calculatePtsdScore() {
             const answers = document.querySelectorAll('input[type="radio"]:checked');
             const score = Array.from(answers).reduce((total, answer) => total + parseInt(answer.value === "yes"), 0);
             document.getElementById("ptsdScore").textContent = score;
+
+            if (score > 13) {
+                document.getElementById("ptsdWarning").textContent = "Warning: You may be at severe risk of PTSD. Please seek immediate professional help.";
+            } else if (score > 10) {
+                document.getElementById("ptsdWarning").textContent = "Warning: You may be at moderate risk of PTSD. Consider consulting a healthcare professional.";
+            } else {
+                document.getElementById("ptsdWarning").textContent = "Your score suggests a lower risk of PTSD, but consult a healthcare professional if you have concerns.";
+            }
         }
     </script>
 </body>
